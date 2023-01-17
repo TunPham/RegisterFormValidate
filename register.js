@@ -3,6 +3,9 @@ const btnRegister = document.getElementById("btnRegister")
 btnRegister.onclick = () => {
     const email = document.getElementById("email");    
     const birthday = document.getElementById("YOB");
+    console.log(birthday.value)
+    const today = new Date();
+    console.log(today)
     document.getElementById("")
     
     const password = document.getElementById("password");
@@ -15,10 +18,16 @@ btnRegister.onclick = () => {
         alert("Wrong Email Format")
         return
     }
-    if(birthday.value.length ==0) {
+    if(birthday.value.length == 0) {
         alert("Please enter your birthday")
         return
     }
+  
+    if(birthday.value >= today.toISOString().split('T')[0]){
+        alert("Your birthday is not allow to be in the future")
+        return
+    }
+
     
     if (password.value.length == 0) {
         alert("Password is required")
